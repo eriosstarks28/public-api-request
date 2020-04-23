@@ -3,12 +3,21 @@ const gallery = document.querySelector(".gallery");
 const body = document.querySelector("body");
 
 //==========================
-// FETCH FUNCTIONS
+// FETCH FUNCTION
 //===========================
 
 fetch(profileUrl)
   .then((response) => response.json())
   .then(generatePerson);
+
+
+  //===============================
+  //
+  // generate info for person card & modal
+  //
+  //===============================
+
+
 
 function generatePerson(data) {
   data = data.results;
@@ -29,6 +38,15 @@ function generatePerson(data) {
   );
 }
 
+
+//======================================
+//
+// create and append profile card
+//
+//======================================
+
+
+
 function createProfile(data) {
   const card = document.createElement("div");
   card.className = "card";
@@ -44,6 +62,14 @@ function createProfile(data) {
 </div>`;
   gallery.appendChild(card);
 }
+
+
+
+//======================================
+//
+// create anppendmodals
+//
+//======================================
 
 function createModal(data) {
   const modal = document.createElement("div");
@@ -67,8 +93,16 @@ function createModal(data) {
   body.appendChild(modal);
 }
 
+
+//============================
+//
+// modal btn function 
+//
+//============================
+
+
+
 function modalBtn(modal) {
-  console.log(modal);
   modal.forEach((box) =>
     box.addEventListener("click", () => {
       if ((event.target.Tagname = "button")) {
