@@ -2,22 +2,21 @@ const profileUrl = "https://randomuser.me/api/?results=12";
 const gallery = document.querySelector(".gallery");
 const body = document.querySelector("body");
 
-//==========================
+//===============================
+//
 // FETCH FUNCTION
-//===========================
+//
+//================================
 
 fetch(profileUrl)
   .then((response) => response.json())
   .then(generatePerson);
 
-
-  //===============================
-  //
-  // generate info for person card & modal
-  //
-  //===============================
-
-
+//===============================
+//
+// generate info for person card & modal
+//
+//===============================
 
 function generatePerson(data) {
   data = data.results;
@@ -38,14 +37,9 @@ function generatePerson(data) {
   );
 }
 
-
 //======================================
-//
 // create and append profile card
-//
 //======================================
-
-
 
 function createProfile(data) {
   const card = document.createElement("div");
@@ -63,12 +57,8 @@ function createProfile(data) {
   gallery.appendChild(card);
 }
 
-
-
 //======================================
-//
 // create anppendmodals
-//
 //======================================
 
 function createModal(data) {
@@ -83,24 +73,18 @@ function createModal(data) {
            <p class="modal-text">${data[i].email}</p>
            <p class="modal-text cap">${data[i].location.city}</p>
            <hr>
-           <p class="modal-text">${data[i].cell}</p>
-           <p class="modal-text">${data[i].location.street},${data[i].location.city},${data[i].location.postcode}</p>
-           <p class="modal-text">Birthday:${data[i].dob.date}</p>
+           <p class="modal-text">Phone Number: ${data[i].cell}</p>
+           <p class="modal-text">Adress: ${data[i].location.street.number}, ${data[i].location.street.name}, ${data[i].location.city}, ${data[i].location.postcode}</p>
+           <p class="modal-text">Birthday: ${data[i].dob.date}</p>
        </div>
    </div>`;
 
   modal.style.display = "none";
   body.appendChild(modal);
 }
-
-
 //============================
-//
-// modal btn function 
-//
+// modal btn function
 //============================
-
-
 
 function modalBtn(modal) {
   modal.forEach((box) =>
